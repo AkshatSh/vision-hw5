@@ -1,6 +1,7 @@
 from utils import argParser
 from dataloader import CifarLoader
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 import numpy as np
 import models
 import torch
@@ -12,7 +13,7 @@ def train(net, dataloader, optimizer, criterion, epoch):
     running_loss = 0.0
     total_loss = 0.0
 
-    for i, data in enumerate(dataloader.trainloader, 0):
+    for i, data in enumerate(tqdm(dataloader.trainloader, 0)):
         # get the inputs
         inputs, labels = data
 
