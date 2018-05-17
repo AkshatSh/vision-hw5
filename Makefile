@@ -5,7 +5,7 @@ run_21: FORCE
 	python main.py --model LazyNet --epochs 50 --logdir run_21
 
 run_22: FORCE
-	python main.py --model BoringNet --epochs 50 --logdir run_22
+	python main.py --model BoringNet --epochs 50 --logdir run_22_activation
 
 run_23: FORCE
 	python main.py --model CoolNet --epochs 50 --logdir run_23

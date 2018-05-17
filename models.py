@@ -56,7 +56,9 @@ class BoringNet(BaseModel):
         self.device = device
         self.layers = nn.Sequential (
             nn.Linear(32 * 32 * 3, 120),
+            nn.ReLU(),
             nn.Linear(120, 84),
+            nn.ReLU(),
             nn.Linear(84, 10)
         ).to(device)
     def forward(self, x):
