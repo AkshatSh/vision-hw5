@@ -6,6 +6,7 @@ import numpy as np
 import models
 import torch
 import pdb
+import os
 
 
 def train(net, dataloader, optimizer, criterion, epoch):
@@ -79,7 +80,9 @@ def main():
     args = argParser()
 
     cifarLoader = CifarLoader(args)
-    net = args.model()
+    if not os.path.exists(args.logdir):
+        os.makedirs(args.logdir)
+    net = args.model(args.logdir)
     print('The log is recorded in ')
     print(net.logFile.name)
 

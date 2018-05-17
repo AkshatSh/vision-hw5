@@ -8,13 +8,14 @@ import time
 import torchvision.models as torchmodels
 
 class BaseModel(nn.Module):
-    def __init__(self):
+    def __init__(self, log_dir):
         super(BaseModel, self).__init__()
-        if not os.path.exists('logs'):
-            os.makedirs('logs')
+        dir_name = os.path.join(log_dir, 'logs/')
+        if not os.path.exists(dir_name):
+            os.makedirs(dir_name)
         ts = time.time()
         st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S_log.txt')
-        self.logFile = open('logs/' + st, 'w')
+        self.logFile = open(str(dir_name) + st, 'w')
 
     def log(self, str, shouldPrint=False):
         if shouldPrint:
@@ -35,8 +36,8 @@ class BaseModel(nn.Module):
 
 
 class LazyNet(BaseModel):
-    def __init__(self):
-        super(LazyNet, self).__init__()
+    def __init__(self, log_dir):
+        super(LazyNet, self).__init__(log_dir)
         # TODO: Define model here
         self.layer = nn.Linear(32 * 32 * 3, 10)
 
@@ -48,8 +49,8 @@ class LazyNet(BaseModel):
         
 
 class BoringNet(BaseModel):
-    def __init__(self):
-        super(BoringNet, self).__init__()
+    def __init__(self, log_dir):
+        super(BoringNet, self).__init__(log_dir)
         # TODO: Define model here
         self.layers = nn.Sequential (
             nn.Linear(32 * 32 * 3, 120),
@@ -62,8 +63,8 @@ class BoringNet(BaseModel):
 
 
 class CoolNet(BaseModel):
-    def __init__(self):
-        super(CoolNet, self).__init__()
+    def __init__(self,log_dir):
+        super(CoolNet, self).__init__(log_dir)
         # TODO: Define model here
         self.firstLayer = nn.Sequential(
             nn.Conv2d(1, 32, kernel_size=8, stride=1),
