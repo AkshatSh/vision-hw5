@@ -59,7 +59,9 @@ class BoringNet(BaseModel):
         )
     def forward(self, x):
         # TODO: Implement forward pass for BoringNet
-        return self.layers.forward(x)
+        x = x.view(-1, 32 * 32 * 3)
+        x =  self.layers.forward(x)
+        return x
 
 
 class CoolNet(BaseModel):
@@ -67,7 +69,7 @@ class CoolNet(BaseModel):
         super(CoolNet, self).__init__(log_dir)
         # TODO: Define model here
         self.firstLayer = nn.Sequential(
-            nn.Conv2d(1, 32, kernel_size=8, stride=1),
+            nn.Conv2d(3, 32, kernel_size=8, stride=1),
             nn.ReLU(),
             nn.MaxPool2d(2)
         )
@@ -76,7 +78,7 @@ class CoolNet(BaseModel):
             nn.ReLU(),
             nn.MaxPool2d(2, stride=1)
         )
-        self.lin1 = nn.Linear(2 * 2 * 64, 100)
+        self.lin1 = nn.Linear(1024, 100)
         self.lin2 = nn.Linear(100, 10)
 
     def forward(self, x):
