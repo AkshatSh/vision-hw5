@@ -77,14 +77,14 @@ class CoolNet(BaseModel):
             nn.Conv2d(3, 32, kernel_size=8, stride=1),
             nn.ReLU(),
             nn.MaxPool2d(2)
-        ).to(device)
+        )
         self.secondLayer = nn.Sequential(
             nn.Conv2d(32, 64, kernel_size=8, stride=1),
             nn.ReLU(),
             nn.MaxPool2d(2, stride=1)
-        ).to(device)
-        self.lin1 = nn.Linear(1024, 100).to(device)
-        self.lin2 = nn.Linear(100, 10).to(device)
+        )
+        self.lin1 = nn.Linear(1024, 100))
+        self.lin2 = nn.Linear(100, 10)
 
     def forward(self, x):
         # TODO: Implement forward pass for CoolNet

@@ -63,6 +63,7 @@ def test(net, dataloader, device, tag=''):
     with torch.no_grad():
         for data in dataTestLoader:
             images, labels = data
+            images, labels = images.to(device), labels.to(device)
             outputs = net(images)
             _, predicted = torch.max(outputs, 1)
             c = (predicted == labels).squeeze()
@@ -85,11 +86,11 @@ def main():
         os.makedirs(args.logdir)
     
     device = torch.device("cuda" if args.cuda else "cpu")
-    net = args.model(args.logdir, device)
+    net = args.model(args.logdir, device).to(device)
     print('The log is recorded in ')
     print(net.logFile.name)
 
-    criterion = net.criterion()
+    criterion = net.criterion().to(device)
     optimizer = net.optimizer()
 
     for epoch in trange(args.epochs):  # loop over the dataset multiple times
