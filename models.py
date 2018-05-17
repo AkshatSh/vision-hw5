@@ -36,10 +36,11 @@ class BaseModel(nn.Module):
 
 
 class LazyNet(BaseModel):
-    def __init__(self, log_dir):
+    def __init__(self, log_dir, device):
         super(LazyNet, self).__init__(log_dir)
         # TODO: Define model here
-        self.layer = nn.Linear(32 * 32 * 3, 10)
+        self.device = device
+        self.layer = nn.Linear(32 * 32 * 3, 10).to(device)
 
     def forward(self, x):
         # TODO: Implement forward pass for LazyNet
@@ -49,14 +50,15 @@ class LazyNet(BaseModel):
         
 
 class BoringNet(BaseModel):
-    def __init__(self, log_dir):
+    def __init__(self, log_dir, device):
         super(BoringNet, self).__init__(log_dir)
         # TODO: Define model here
+        self.device = device
         self.layers = nn.Sequential (
             nn.Linear(32 * 32 * 3, 120),
             nn.Linear(120, 84),
             nn.Linear(84, 10)
-        )
+        ).to(device)
     def forward(self, x):
         # TODO: Implement forward pass for BoringNet
         x = x.view(-1, 32 * 32 * 3)
@@ -65,21 +67,22 @@ class BoringNet(BaseModel):
 
 
 class CoolNet(BaseModel):
-    def __init__(self,log_dir):
+    def __init__(self,log_dir, device):
         super(CoolNet, self).__init__(log_dir)
         # TODO: Define model here
+        self.device = device
         self.firstLayer = nn.Sequential(
             nn.Conv2d(3, 32, kernel_size=8, stride=1),
             nn.ReLU(),
             nn.MaxPool2d(2)
-        )
+        ).to(device)
         self.secondLayer = nn.Sequential(
             nn.Conv2d(32, 64, kernel_size=8, stride=1),
             nn.ReLU(),
             nn.MaxPool2d(2, stride=1)
-        )
-        self.lin1 = nn.Linear(1024, 100)
-        self.lin2 = nn.Linear(100, 10)
+        ).to(device)
+        self.lin1 = nn.Linear(1024, 100).to(device)
+        self.lin2 = nn.Linear(100, 10).to(device)
 
     def forward(self, x):
         # TODO: Implement forward pass for CoolNet
