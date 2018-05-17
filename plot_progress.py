@@ -33,6 +33,7 @@ def main():
 	plt.plot(train_accuracy)
 	plt.plot(test_accuracy)
 	plt.savefig(args.output + "/train_test.png")
+	plt.clf()
 	plt.plot(train_loss)
 	plt.savefig(args.output + "/train_loss.png")
 
