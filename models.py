@@ -16,8 +16,9 @@ class BaseModel(nn.Module):
         st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S_log.txt')
         self.logFile = open('logs/' + st, 'w')
 
-    def log(self, str):
-        print(str)
+    def log(self, str, shouldPrint=False):
+        if shouldPrint:
+            print(str)
         self.logFile.write(str + '\n')
 
     def criterion(self):
