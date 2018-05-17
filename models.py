@@ -41,7 +41,9 @@ class LazyNet(BaseModel):
 
     def forward(self, x):
         # TODO: Implement forward pass for LazyNet
-        return self.layer(x)
+        x = x.view(-1, 32 * 32 * 3)
+        x = self.layer(x)
+        return x
         
 
 class BoringNet(BaseModel):
