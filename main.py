@@ -8,6 +8,12 @@ import torch
 import pdb
 import os
 
+def createLabelMatrix(labels):
+    matrix = np.zeros((labels.shape[0], 10))
+    for i in range(len(labels)):
+        matrix[i][labels[i]] = 1
+    return torch.FloatTensor(matrix)
+
 def train(net, dataloader, optimizer, criterion, epoch, device):
 
     running_loss = 0.0
@@ -16,6 +22,7 @@ def train(net, dataloader, optimizer, criterion, epoch, device):
     for i, data in enumerate(tqdm(dataloader.trainloader, 0)):
         # get the inputs
         inputs, labels = data
+        labels = createLabelMatrix(l) # MSE loss
         inputs, labels = inputs.to(device), labels.to(device)
 
         # zero the parameter gradients
