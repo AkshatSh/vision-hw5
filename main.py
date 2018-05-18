@@ -96,7 +96,7 @@ def main():
     for epoch in trange(args.epochs):  # loop over the dataset multiple times
         net.adjust_learning_rate(optimizer, epoch, args)
         train(net, cifarLoader, optimizer, criterion, epoch, device)
-        if epoch % 10 == 0: # Comment out this part if you want a faster training
+        if epoch % 1== 0: # Comment out this part if you want a faster training
             test(net, cifarLoader, device, 'Train')
             test(net, cifarLoader, device, 'Test')
 
