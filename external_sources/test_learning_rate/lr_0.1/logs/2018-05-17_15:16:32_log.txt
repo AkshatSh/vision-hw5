@@ -1,0 +1,37 @@
+[1,  2000] loss: 2.046
+[1,  4000] loss: 2.089
+[1,  6000] loss: 2.350
+[1,  8000] loss: 2.423
+[1, 10000] loss: 2.442
+[1, 12000] loss: 2.494
+Final Summary:   loss: 2.215
+Train Accuracy of the network: 10 %
+Train Accuracy of plane :  2 %
+Train Accuracy of   car :  0 %
+Train Accuracy of  bird :  0 %
+Train Accuracy of   cat :  0 %
+Train Accuracy of  deer :  0 %
+Train Accuracy of   dog :  0 %
+Train Accuracy of  frog :  0 %
+Train Accuracy of horse :  0 %
+Train Accuracy of  ship : 99 %
+Train Accuracy of truck :  0 %
+Test Accuracy of the network: 10 %
+Test Accuracy of plane :  2 %
+Test Accuracy of   car :  0 %
+Test Accuracy of  bird :  0 %
+Test Accuracy of   cat :  0 %
+Test Accuracy of  deer :  0 %
+Test Accuracy of   dog :  0 %
+Test Accuracy of  frog :  0 %
+Test Accuracy of horse :  0 %
+Test Accuracy of  ship : 99 %
+Test Accuracy of truck :  0 %
+[2,  2000] loss: 2.489
+[2,  4000] loss: 2.495
+[2,  6000] loss: 2.498
+[2,  8000] loss: 2.489
+[2, 10000] loss: 2.479
+[2, 12000] loss: 2.478
+Final Summary:   loss: 2.389
+Train Accuracy of the network: 10 %
