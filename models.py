@@ -30,6 +30,9 @@ class BaseModel(nn.Module):
 
     def adjust_learning_rate(self, optimizer, epoch, args):
         lr = args.lr  # TODO: Implement decreasing learning rate's rules
+        if epoch % 50 == 0 and epoch != 0:
+            lr = 0.1 * lr
+        args.lr = lr
         for param_group in optimizer.param_groups:
             param_group['lr'] = lr
        
@@ -83,7 +86,7 @@ class CoolNet(BaseModel):
             nn.ReLU(),
             nn.MaxPool2d(2, stride=1)
         )
-        self.lin1 = nn.Linear(1024, 100))
+        self.lin1 = nn.Linear(1024, 100)
         self.lin2 = nn.Linear(100, 10)
 
     def forward(self, x):
